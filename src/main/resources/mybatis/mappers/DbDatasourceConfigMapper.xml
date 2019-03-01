@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hailian.mapper.DbDatasourceConfigMapper">
+
+   <!-- 通用查询映射结果 -->
+   <resultMap id="BaseResultMap" type="com.hailian.entity.DbDatasourceConfig">
+      <id column="id" property="id" />
+      <result column="create_by" property="createBy" />
+      <result column="create_date" property="createDate" />
+      <result column="update_by" property="updateBy" />
+      <result column="update_date" property="updateDate" />
+      <result column="remarks" property="remarks" />
+      <result column="del_flag" property="delFlag" />
+      <result column="sys_plat_id" property="sysPlatId" />
+      <result column="name" property="name" />
+      <result column="enname" property="enname" />
+      <result column="db_type" property="dbType" />
+      <result column="db_diver" property="dbDiver" />
+      <result column="db_url" property="dbUrl" />
+      <result column="db_name" property="dbName" />
+      <result column="db_password" property="dbPassword" />
+      <result column="db_version" property="dbVersion" />
+      <result column="max_num" property="maxNum" />
+   </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+      create_by,
+      create_date,
+      update_by,
+      update_date,
+      remarks,
+      del_flag,
+      sys_plat_id,
+      name,
+      enname,
+      db_type,
+      db_diver,
+      db_url,
+      db_name,
+      db_password,
+      db_version,
+      max_num
+</sql>
+
+</mapper>

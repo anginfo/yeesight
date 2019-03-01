@@ -1,0 +1,179 @@
+package ${package.Controller};
+
+#if(${restControllerStyle})
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+#else
+import org.springframework.stereotype.Controller;
+#end
+#if(${superControllerClassPackage})
+import ${superControllerClassPackage};
+#end
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.servlet.http.HttpServletRequest;
+import ${package.Service}.${table.serviceName};
+import ${package.Entity}.${entity};
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import com.hailian.annotation.AuthPower;
+import com.hailian.common.PublicResult;
+import com.hailian.enums.PublicResultConstant;
+import com.github.pagehelper.PageInfo;
+/**
+ *
+ * @date ${date}
+ * @author ${author}
+ * @todo $!{table.comment}路由
+ */
+#if(${restControllerStyle})
+@RestController
+#else
+@Controller
+#end
+@Api(value = "$!{table.comment}",description="$!{table.comment} @author ${author}")
+#if(${superControllerClass})
+public class ${table.controllerName} extends ${superControllerClass} {
+#else
+public class ${table.controllerName} extends BaseController{
+#end
+    private final Logger logger = LoggerFactory.getLogger(${table.controllerName}.class);
+
+    @Autowired
+    public ${table.serviceName} i${entity}Service;
+
+    /**
+     * @date   ${date}
+     * @author ${author}
+     * @todo   新增$!{table.comment}
+     */
+    @ResponseBody
+ 	@AuthPower(avoidVersion = false, avoidPower = true, avoidSign = true, avoidLogin = true, avoidPlatform = true)
+  	@ApiOperation(value = "新增$!{table.comment}", notes = "新增$!{table.comment}", httpMethod = "POST")
+	@RequestMapping(value = "/api/v1#if(${package.ModuleName})/${package.ModuleName}#end/#if(${controllerMappingHyphenStyle})${controllerMappingHyphen}#else${table.entityPath}#end/add", method = RequestMethod.POST,produces = { "application/json;charset=UTF-8" })
+	public PublicResult<${entity}> add(HttpServletRequest request,${entity} entity) {
+		try {
+			if(StringUtils.isBlank(entity.getId())){
+				//新增
+				entity.setCreateBy(getLoginUser(request).getId());
+				if(i${entity}Service.saveOrUpdate(entity)){
+					return new PublicResult<>(PublicResultConstant.SUCCESS, entity);
+				}else{
+					return new PublicResult<>(PublicResultConstant.ERROR, null);
+				}
+			}else{
+				return new PublicResult<>(PublicResultConstant.PARAM_ERROR, "新增主键必须为空!",null);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.error(e.getMessage());
+			return new PublicResult<>(PublicResultConstant.FAILED,e.getMessage(), null);
+		}
+	}
+    
+    /**
+     * @date   ${date}
+     * @author ${author}
+     * @todo   删除$!{table.comment}
+     */
+    @ResponseBody
+ 	@AuthPower(avoidVersion = false, avoidPower = true, avoidSign = true, avoidLogin = true, avoidPlatform = true)
+  	@ApiOperation(value = "删除$!{table.comment}", notes = "删除$!{table.comment}", httpMethod = "DELETE")
+    @RequestMapping(value = "/api/v1#if(${package.ModuleName})/${package.ModuleName}#end/#if(${controllerMappingHyphenStyle})${controllerMappingHyphen}#else${table.entityPath}#end/delete/{id}", method = RequestMethod.DELETE,produces = { "application/json;charset=UTF-8" })
+	public PublicResult<${entity}> delete(HttpServletRequest request,@PathVariable("id") String id) {
+		try {
+			 if(i${entity}Service.deleteLogic(id)){
+				 return new PublicResult<>(PublicResultConstant.SUCCESS, null);
+			 }else{
+				 return new PublicResult<>(PublicResultConstant.ERROR, null);
+			 }
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.error(e.getMessage());
+			return new PublicResult<>(PublicResultConstant.FAILED,e.getMessage(), null);
+		}
+	}
+	
+	 /**
+     * @date   ${date}
+     * @author ${author}
+     * @todo   更新$!{table.comment}
+     */
+    @ResponseBody
+ 	@AuthPower(avoidVersion = false, avoidPower = true, avoidSign = true, avoidLogin = true, avoidPlatform = true)
+  	@ApiOperation(value = "更新$!{table.comment}", notes = "更新$!{table.comment}", httpMethod = "PUT")
+	@RequestMapping(value = "/api/v1#if(${package.ModuleName})/${package.ModuleName}#end/#if(${controllerMappingHyphenStyle})${controllerMappingHyphen}#else${table.entityPath}#end/update", method = RequestMethod.PUT,produces = { "application/json;charset=UTF-8" })
+	public PublicResult<${entity}> update(HttpServletRequest request,${entity} entity) {
+		try {
+			if(entity!=null&&StringUtils.isNotBlank(entity.getId())){
+				//更新
+				entity.setUpdateBy(getLoginUser(request).getId());
+				if(i${entity}Service.saveOrUpdate(entity)){
+					return new PublicResult<>(PublicResultConstant.SUCCESS, entity);
+				}else{
+					return new PublicResult<>(PublicResultConstant.ERROR, null);
+				}
+			}else{
+				return new PublicResult<>(PublicResultConstant.PARAM_ERROR, "修改主键不能为空!",null);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.error(e.getMessage());
+			return new PublicResult<>(PublicResultConstant.FAILED,e.getMessage(), null);
+		}
+	}
+    
+    
+    /**
+     * @date   ${date}
+     * @author ${author}
+     * @todo   查询单个$!{table.comment}
+     */
+    @ResponseBody
+ 	@AuthPower(avoidVersion = false, avoidPower = true, avoidSign = true, avoidLogin = true, avoidPlatform = true)
+  	@ApiOperation(value = "查询单个$!{table.comment}", notes = "查询单个$!{table.comment}", httpMethod = "GET")
+  	@RequestMapping(value = "/api/v1#if(${package.ModuleName})/${package.ModuleName}#end/#if(${controllerMappingHyphenStyle})${controllerMappingHyphen}#else${table.entityPath}#end/get/{id}", method = RequestMethod.GET,produces = { "application/json;charset=UTF-8" } )
+  	public PublicResult<${entity}> get(HttpServletRequest request,@PathVariable("id") String id) {
+  		try {
+  			return new PublicResult<>(PublicResultConstant.SUCCESS, i${entity}Service.getById(id));
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.error(e.getMessage());
+			return new PublicResult<>(PublicResultConstant.FAILED,e.getMessage(), null);
+		}
+		
+  	}
+	
+    /**
+     * @date   ${date}
+     * @author ${author}
+     * @todo   分页查询$!{table.comment}
+     */
+    @ResponseBody
+ 	@AuthPower(avoidVersion = false, avoidPower = true, avoidSign = true, avoidLogin = true, avoidPlatform = true)
+  	@ApiOperation(value = "分页查询$!{table.comment}", notes = "分页查询$!{table.comment}", httpMethod = "GET")
+  	@RequestMapping(value = "/api/v1#if(${package.ModuleName})/${package.ModuleName}#end/#if(${controllerMappingHyphenStyle})${controllerMappingHyphen}#else${table.entityPath}#end/list", method = RequestMethod.GET,produces = { "application/json;charset=UTF-8" })
+    public PublicResult<PageInfo<${entity}>> list(${entity} entity,@RequestParam(value="pageNum",required = false,defaultValue="1") Integer pageNum,
+			@RequestParam(value="pageSize",required = false,defaultValue="10") Integer pageSize,HttpServletRequest request) {
+		try {
+			PageInfo<${entity}> page=i${entity}Service.pageList(this, request, entity, pageNum, pageSize);
+			return new PublicResult<>(PublicResultConstant.SUCCESS, page);
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.error(e.getMessage());
+			return new PublicResult<>(PublicResultConstant.FAILED,e.getMessage(),null);
+		}
+
+	}
+  
+}
+

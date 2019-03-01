@@ -1,0 +1,98 @@
+:root {
+    --activeColor:#1890ff;
+    --fontColor:#0083b3;
+    --bgColor:#0d0c2b;
+}
+/*重置样式*/
+html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, fieldset, legend, img {
+    margin: 0;
+    padding: 0;
+    font-family: "微软雅黑", sans-serif;
+}
+body {
+    line-height: 1.5;
+    font:1rem "微软雅黑", sans-serif;
+    color: var(--fontColor);
+    background-color: var(--bgColor);
+}
+ul, ol, li {
+    list-style: none;
+}
+a, u {
+    text-decoration: none;
+}
+a:hover {
+    color: var(--activeColor);
+}
+a:link {
+    text-decoration: none;
+}
+img {
+    display: block;
+    border: 0;
+}
+*{
+    box-sizing: border-box;
+}
+input {
+    outline: none;
+}
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder { 
+color: #808080!important; 
+} 
+
+input:-moz-placeholder, textarea:-moz-placeholder { 
+color: #808080!important; 
+} 
+input::-moz-placeholder, textarea::-moz-placeholder { 
+color: #808080!important; 
+} 
+input:-ms-input-placeholder, textarea:-ms-input-placeholder { 
+color: #808080!important; 
+}
+
+html,body {
+   height: 100%;
+   overflow: hidden;
+   min-width: 1000px;
+}
+
+
+/********************************媒体查询********************************/
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px){ 
+    html {
+        font-size: 8.27px!important;
+    }
+ }
+/* 
+// Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+    html {
+        font-size: 10px!important;
+    }
+ }
+
+ @media (min-width: 1440px) { 
+    html {
+        font-size: 12px!important;
+    }
+}
+
+@media (min-width: 1600px) { 
+    html {
+        font-size: 13.33px!important;
+    }
+}
+@media (min-width: 1920px) { 
+    html {
+        font-size: 16px!important;
+    }
+}

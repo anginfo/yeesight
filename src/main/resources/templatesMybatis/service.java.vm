@@ -1,0 +1,39 @@
+package ${package.Service};
+
+import ${package.Entity}.${entity};
+import ${superServiceClassPackage};
+import com.hailian.base.BaseController;
+import javax.servlet.http.HttpServletRequest;
+import com.github.pagehelper.PageInfo;
+
+/**
+ * @date ${date}
+ * @author ${author}
+ * $!{table.comment}服务类
+ */
+public interface ${table.serviceName} extends ${superServiceClass}<${entity}> {
+ 	 /**
+     * @date   ${date}
+     * @author ${author}
+     * @todo   $!{table.comment}新增或者修改
+     */
+	boolean saveOrUpdate(${entity} entity);
+	/**
+     * @date   ${date}
+     * @author ${author}
+     * @todo   $!{table.comment}逻辑删除
+     */
+	boolean deleteLogic(String id);
+	/**
+     * @date   ${date}
+     * @author ${author}
+     * @todo   $!{table.comment}单条数据查询
+     */
+	${entity} getById(String id);
+	/**
+     * @date   ${date}
+     * @author ${author}
+     * @todo   $!{table.comment}分页查询
+     */
+	PageInfo<${entity}> pageList(BaseController c,HttpServletRequest request,${entity} entity,Integer pageNum,Integer pageSize);
+}

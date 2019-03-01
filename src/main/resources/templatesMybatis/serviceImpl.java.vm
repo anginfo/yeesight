@@ -1,0 +1,132 @@
+package ${package.ServiceImpl};
+
+import ${package.Entity}.${entity};
+import ${package.Mapper}.${table.mapperName};
+import ${package.Service}.${table.serviceName};
+import ${superServiceImplClassPackage};
+import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
+import javax.servlet.http.HttpServletRequest;
+import com.hailian.common.UUIDUtils;
+import com.hailian.conf.Constant;
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.hailian.base.BaseController;
+import java.util.Date;
+import java.util.List;
+import org.apache.ibatis.session.RowBounds;
+import org.apache.commons.lang3.StringUtils;
+/**
+ * @date ${date}
+ * @author ${author}
+ * $!{table.comment}服务实现类
+ */
+@Service
+@Transactional
+public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.mapperName}, ${entity}> implements ${table.serviceName},Constant {
+
+    @Autowired
+    private ${table.mapperName} ${table.entityPath}Mapper;
+    
+     /**
+     * @date ${date}
+     * @author ${author}
+     * @todo   $!{table.comment}新增或者修改
+     */
+	@Override
+    @Transactional(rollbackFor = Exception.class)
+	public boolean saveOrUpdate(${entity} entity) {
+		if(StringUtils.isBlank(entity.getId())){
+			//新增
+			entity.setId(UUIDUtils.getUuid());
+			entity.setCreateDate(new Date());
+			return ${table.entityPath}Mapper.insert(entity)>0;
+		}else{
+			entity.setUpdateDate(new Date());
+			return ${table.entityPath}Mapper.updateById(entity)>0;
+		}
+	}
+	/**
+     * @date ${date}
+     * @author ${author}
+     * @todo   $!{table.comment}逻辑删除
+     */
+	@Override
+    @Transactional(rollbackFor = Exception.class)
+	public boolean deleteLogic(String id) {
+		${entity} entity=new ${entity}();
+		entity.setId(id);
+		entity.setDelFlag(DEL_FLAG);
+		entity.setUpdateDate(new Date());
+		return ${table.entityPath}Mapper.updateById(entity)>0;
+	}
+	/**
+     * @date ${date}
+     * @author ${author}
+     * @todo   $!{table.comment}单条数据查询
+     */
+	@Override
+	public ${entity} getById(String id) {
+		EntityWrapper<${entity}> wrapper = new EntityWrapper<${entity}>();
+		wrapper.where("del_flag={0}",UN_DEL_FLAG);
+		wrapper.eq("id", id);
+		return selectOne(wrapper);
+	}
+	/**
+     * @date   @date ${date}
+     * @author ${author}
+     * @todo   $!{table.comment}分页查询
+     */
+	@Override
+	public PageInfo<${entity}> pageList(BaseController c, HttpServletRequest request, ${entity} entity,Integer pageNum,Integer pageSize) {
+		PageHelper.startPage(pageNum, pageSize);
+		EntityWrapper<${entity}> wrapper = searchWrapper(c,request, entity);
+		List<${entity}> list = ${table.entityPath}Mapper.selectPage(new RowBounds((pageNum-1)*pageSize, pageSize),wrapper);
+		PageInfo<${entity}> page = new PageInfo<${entity}>();
+		page.setList(list);
+		page.setTotal(${table.entityPath}Mapper.selectCount(wrapper));
+		
+		return page;
+	}
+	
+	 /**
+     * @date ${date}
+     * @author ${author}
+     * @todo   $!{table.comment}构建查询条件-以后扩展
+     */
+    private EntityWrapper<${entity}> searchWrapper(BaseController c,HttpServletRequest request, ${entity} entity) {
+		EntityWrapper<${entity}> wrapper = new EntityWrapper<${entity}>();
+		wrapper.where("del_flag={0}", UN_DEL_FLAG);
+		if(c!=null&&request!=null&&c.getLoginUser(request)!=null&&StringUtils.isNotBlank(c.getLoginUser(request).getId())){
+			if(!c.isAdmin(request))
+			 wrapper.eq("create_by", c.getLoginUser(request).getId());
+		}
+		#foreach($field in ${table.fields})
+		#if(${field.propertyType.equals("boolean")})
+		#set($getprefix="is")
+		#else
+		#set($getprefix="get")
+		#end
+		//根据${field.comment}模糊查询
+		if(entity.${getprefix}${field.capitalName}()!=null&&StringUtils.isNotBlank(String.valueOf(entity.${getprefix}${field.capitalName}()))){
+			wrapper.like("${field.name}", String.valueOf(entity.${getprefix}${field.capitalName}()));
+		}
+		#end
+		if(entity.getStartDate()!=null){
+			wrapper.ge("create_date", entity.getStartDate());
+		}
+		if(entity.getEndDate()!=null){
+			wrapper.le("create_date", entity.getEndDate());
+		}
+		if(StringUtils.isNoneBlank(entity.getOrderBy())){
+			wrapper.orderBy(entity.getOrderBy(), entity.isAsc());
+		}else{
+			wrapper.orderBy("create_date", false);
+		}
+		//System.out.println(wrapper.originalSql());
+		return wrapper;
+	}
+   
+}

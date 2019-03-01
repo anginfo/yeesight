@@ -1,0 +1,544 @@
+body {
+    background: #0d0c2b;
+    color: #0083b3;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+}
+
+/* add because left div from fhxv.css*/
+
+.titilebox {
+    height: 33%;
+    font-size: 1.1rem;
+}
+
+.boxcnt {
+    width: 110%;
+    height: 67%;
+    color: #e1e1e6;
+    /* padding-left: 5px; */
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    transform: scale(.9);
+}
+
+.line {
+    position: absolute;
+    writing-mode: tb-rl;
+    text-align: center;
+    width: 7%;
+    left: 8%;
+    background-repeat: no-repeat;
+    background-size: 33% 100%;
+    background-position: 60%;
+}
+
+.line_1 {
+    top: 5%;
+    height: 57%;
+    border-top: .1rem solid var(--fontColor);
+    border-bottom: .05rem solid var(--fontColor);
+}
+
+.line img {
+    position: absolute;
+    height: 40%;
+    left: 30%;
+}
+
+.line_2 {
+    top: 62%;
+    height: 36%;
+    background-image: url(/690/images/A.png);
+    border-top: .05rem solid var(--fontColor);
+    border-bottom: .1rem solid var(--fontColor);
+}
+
+.turndown {
+    height: 100%;
+    position: relative;
+}
+
+.turnbox_s_l {
+    width: 100%;
+    height: 67%;
+    background: #1b294e;
+}
+
+.boxcnt_s {
+    height: 100%;
+}
+
+.turnbox_s_n>div {
+    height: 100%;
+    background: #1b294e;
+}
+
+.boxcnt_s_n {
+    height: 100%;
+    width: 89%;
+    /* margin: 0 0 0 7%; */
+}
+
+/* -----end----- */
+
+nav {
+    height: 13%;
+    position: relative;
+}
+
+.nav_top {
+    position: relative;
+    border-bottom: 0.1rem solid #15346a;
+}
+
+.title {
+    color: white;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+.time {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 2rem;
+}
+
+.hour {
+    margin-left: 1rem;
+}
+
+.nav_sub {
+    /* padding-top: 1.2rem; */
+    /* overflow: hidden; */
+    height: 58%;
+}
+
+/* .search{
+    float: left;
+    margin-left: 5rem;
+    height: 3.5rem;
+    width: 30rem;
+    padding-top: .5rem;
+} */
+
+#search_input {
+    box-sizing: border-box;
+    border: 0.05rem solid #0083b3;
+    height: 2rem;
+    width: 17rem;
+    margin-left: 1rem;
+    outline: 0;
+    background: transparent;
+    border-radius: 0.3rem;
+    color: #0083b3;
+    padding: 1rem;
+}
+
+.save {
+    float: right;
+    width: 7rem;
+    height: 2rem;
+    line-height: 2rem;
+    cursor: pointer;
+}
+
+.box_sp {
+    text-align: center;
+    background: #122550;
+    box-shadow: 0 0 10px #0083b3 inset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.legend {
+    /* float: left; */
+    width: 30rem;
+    height: 2rem;
+    /* margin-left: 51rem; */
+    position: absolute;
+    right: 23%;
+    /* -webkit-transform: translateX(-40%);
+    -ms-transform: translateX(-40%);
+    transform: translateX(-40%); */
+}
+
+.show {
+    float: left;
+    line-height: 2rem;
+    margin: 0 1.5rem;
+}
+
+.show span {
+    font-size: 1.2rem;
+}
+
+.ball {
+    display: inline-block;
+    width: .7rem;
+    height: .7rem;
+    border-radius: 50%;
+    margin-right: .2rem;
+}
+
+.show_1 {
+    color: #1ab30d;
+}
+
+.ball_1 {
+    background: #1ab30d;
+}
+
+.show_2 {
+    color: #7a7dfe;
+}
+
+.ball_2 {
+    background: #7a7dfe;
+}
+
+.show_3 {
+    margin-right: 0;
+    color: #fbdb14;
+}
+
+.ball_3 {
+    background: #fbdb14;
+}
+
+.company_time {
+    font-size: 1.2rem;
+    float: right;
+    height: 2rem;
+    line-height: 2rem;
+    margin-right: 1rem;
+}
+
+.maintitle {
+    height: 7%;
+    position: relative;
+}
+
+.titlein {
+    width: 85%;
+    float: right;
+    height: 140%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    text-align: center;
+    /* padding-top: 1rem; */
+}
+
+.titlein div {
+    width: 20%;
+    padding-top: 3.5%;
+}
+
+.titlein div h2 span {
+    font-size: 1rem
+}
+
+.main {
+    width: 100%;
+    height: 80%;
+    /* display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; */
+}
+
+.left {
+    width: 15%;
+    box-sizing: border-box;
+    float: left;
+}
+
+.left_top {
+    height: 78%;
+    border-right: .1rem solid #15346a;
+}
+
+.left_bottom {
+    height: 25%;
+    /* background: purple; */
+    border-right: .1rem solid #15346a;
+}
+
+/* *****图表部分***** */
+
+.right {
+    width: 85%;
+    box-sizing: border-box;
+    float: right;
+}
+
+.right_top {
+    height: 87.8%;
+    /* background: pink; */
+    /* border-bottom: .1rem solid #15346a; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-image: url('/690/images/line.png');
+    background-size: 100% 85.1%;
+    background-position: top;
+    background-repeat: no-repeat;
+}
+
+.right_top>div {
+    height: 110%;
+    width: 20%;
+    border-right: .1rem solid #15346a;
+}
+
+/* #ec04_bar {
+    height: 104.5%;
+} */
+
+/* *****$$$$$$***** */
+
+.right_bottom {
+    height: 22%;
+    /* background: skyblue; */
+}
+
+p.left_title {
+    float: right;
+    width: 90%;
+    height: 5%;
+    text-align: center;
+    font-size: 1.125rem;
+    font-weight: 600;
+    position: relative;
+    background: #0d0c2b;
+    right: -1px;
+}
+
+.left_top_1 {
+    height: 62%;
+    /* overflow: hidden; */
+}
+
+.left_top_2 {
+    height: 38%;
+    /* overflow: hidden; */
+}
+
+.left_bottom_1 {
+    height: 63%;
+}
+
+.left_bottom_2 {
+    height: 37%;
+}
+
+.turnbox {
+    float: right;
+    width: 75%;
+    /* margin-bottom: 3%; */
+    /* margin-right: 1rem; */
+    margin: 1.7% 10px 0% 0;
+    height: 18%;
+    background: #1b294e;
+}
+
+.titlebox {
+    width: 100%;
+    height: 1.7rem;
+    line-height: 1.7rem;
+}
+
+.titlecnt {
+    width: 100%;
+    color: #fff;
+    font-size: .8rem;
+    background: #1b294e;
+    padding: .5rem 0 1rem .5rem;
+    margin: 0 auto;
+    height: 78%;
+}
+
+.turnbox_lb {
+    margin-top: 1rem;
+}
+
+.turnbox_spa {
+    margin: 0 1rem 0 0;
+    color: #15346a
+}
+
+.left_line {
+    float: left;
+    writing-mode: tb-rl;
+    text-align: center;
+    width: 12%;
+    line-height: 2rem;
+}
+
+.l_lin1 {
+    margin: 1.8rem 0 0 1rem;
+    height: calc(100% - 1.8rem);
+    border-top: 0.1rem solid #00ccff;
+    border-bottom: .05rem solid #00ccff;
+    position: relative;
+    background-image: url('/690/images/A.png');
+    background-repeat: no-repeat;
+    background-size: 33% 100%;
+    background-position: 60%;
+}
+
+.img_up {
+    position: absolute;
+    top: 0%;
+    left: 43%;
+}
+
+.img_down {
+    position: absolute;
+    bottom: 0%;
+    left: 43%;
+}
+
+.l_lin2 {
+    margin: 0 0 0 1rem;
+    height: 61%;
+    border-bottom: .1rem solid #00ccff;
+    border-top: .05rem solid #00ccff;
+    background-image: url('/690/images/A.png');
+    background-repeat: no-repeat;
+    background-size: 33% 100%;
+    background-position: 60%;
+}
+
+.l_lin3 {
+    margin: .8rem 0 0 1rem;
+    height: calc(100% - .8rem);
+    ;
+    border-top: .1rem solid #00ccff;
+    border-bottom: .1rem solid #00ccff;
+    background-image: url('/690/images/LeftArrow.png');
+    background-repeat: no-repeat;
+    background-size: 33% 100%;
+    background-position: 60%;
+}
+
+.l_lin4 {
+    margin: 0 0 0 1rem;
+    height: 90%;
+    border-bottom: .1rem solid #00ccff;
+    border-top: .05rem solid #00ccff;
+}
+
+.turnbox_cut {
+    width: 80%;
+    margin: 0;
+    padding: 1rem 1rem 0 0;
+    border-top: .1rem solid #15346a;
+}
+
+.btn_grounp {
+    position: absolute;
+    left: 2%;
+    top: 25%;
+}
+
+.btn_grounp .pt_btn {
+    padding: 0.3rem 1rem;
+    border: 1px solid #0284b5;
+    text-align: center;
+    vertical-align: middle;
+    color: #0284b5;
+    margin-right: 2rem;
+    cursor: pointer;
+    display: inline-block;
+}
+.ec_box>div{
+    width: 100%;
+}
+#ec05_bar .FDGT {
+    width: 100%;
+    height: 17.6%;
+    text-align: center;
+    font-size: 1.125rem;
+    color: #0083b3;
+    /* line-height: 7.5rem; */
+    font-weight: 600;
+    padding-top: 1rem;
+    position: relative;
+}
+
+#bottom_line {
+    width: 100%;
+    height: 0;
+    border-bottom: .1rem solid #15346a;
+    border-right: 0;
+    position: absolute;
+    bottom: 17.5%;
+    left: 32%;
+}
+
+.turnup {
+    position: relative;
+    height: 100%;
+}
+
+.line_1 {
+    top: 6%;
+}
+
+.line_2 {
+    top: 63%;
+}
+
+.turnbox_s {
+    height: 60%;
+    margin-top: 3%;
+}
+
+.turnbox_s_n {
+    height: 22%;
+}
+
+.line_3 {
+    top: 0;
+    height: 65%;
+    border-top: .1rem solid var(--fontColor);
+    border-bottom: .05rem solid var(--fontColor);
+    background-image: url(/690/images/LeftArrow2.png);
+}
+
+.line_4 {
+    top: 65%;
+    height: 30%;
+    border-top: .05rem solid var(--fontColor);
+    border-bottom: .1rem solid var(--fontColor);
+}
+
+.wtf {
+    display: none;
+}
+
+.wtf div {
+    border: 0;
+}
+
+#pie_1 {
+    height: 35%;
+    width: 100%;
+}
+
+#pie_2 {
+    height: 50%;
+    width: 100%;
+}
+
+/* @media (max-width:1400px) {
+    .turnbox {
+        margin-bottom: 2.5%;
+    }
+} */

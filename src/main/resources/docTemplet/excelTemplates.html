@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>excel_title_name</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .tabs{
+            font-size: 14px;
+        }
+        .tabs-control{
+            /*border-top: 1px solid #ddd;*/
+            background: #eee;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+        }
+        .tabs-control:after{
+            display: table;
+            content: "";
+            clear: both;
+        }
+        .tabs-control .tab-tap{
+            float: left;
+            cursor: pointer;
+            margin-right: 16px;
+            color: #444;
+            padding: 0 16px;
+            white-space: nowrap;
+            line-height: 36px;
+            height: 36px;
+            border-top: 2px solid transparent;
+        }
+        .tabs-control .tab-tap:hover{
+            color: #40a9ff;
+        }
+        .tabs-control .active{
+            border-top-color: #1890ff;
+            color: #1890ff;
+        }
+
+        .tabs-content{
+            padding: 10px;
+            height: calc(100vh - 36px);
+            width: 100vw;
+            overflow: auto;
+        }
+        .tabs-content .tab-con{
+            display: none;
+        }
+        .tabs-content .active{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div class="tabs">
+    <div class="tabs-content">sheet_content_html_plocehold</div>
+    <div class="tabs-control">sheet_name_html_plocehold</div>
+</div>
+<script type="text/javascript" src="https://www.mwcxs.top/static/testTool/watermark.js"></script>
+<!-- https://www.mwcxs.top/static/testTool/watermark.js -->
+<!-- /api/docUploadFile/viewJs?name=watermark.js -->
+<script>
+    function tabsChange(index, tabLabel) {
+        console.log(index, tabLabel);
+    }
+    window.onload = function(){
+        var tabTapList = document.querySelectorAll('.tabs-control .tab-tap');
+        tabTapList.forEach(function(tabTap, index) {
+            tabTap.addEventListener('click', function() {
+                document.querySelector(".tabs-control .active").classList.remove('active');
+                document.querySelector(".tabs-content .active").classList.remove('active');
+
+                tabTap.classList.add('active');
+                document.querySelectorAll(".tabs-content .tab-con")[index].classList.add('active');
+                tabsChange(index, tabTap.textContent);
+            })
+        });
+        waterFunction("1169_water_mark");
+    };
+    function waterFunction(text){
+    	var config={
+    			watermark_txt:text,
+    			watermark_fontsize:25,
+    			watermark_angle:30,
+    			watermark_alpha:0.05,
+    			watermark_font:"微软雅黑",
+    			watermark_x_space:50,
+    			watermark_y_space:30
+    			
+    	};
+       watermark.load(config);
+    }
+</script>
+<!--禁止网页另存为： --> 
+<noscript><iframe src=*.html></iframe></noscript>
+
+<!-- 禁止选择文本： --> 
+<script type="text/javascript">
+
+var omitformtags=["input", "textarea", "select"]
+
+omitformtags=omitformtags.join("|")
+
+function disableselect(e){ 
+if (omitformtags.indexOf(e.target.tagName.toLowerCase())==-1) 
+return false 
+}
+
+function reEnable(){ 
+return true 
+}
+
+if (typeof document.onselectstart!="undefined") 
+document.onselectstart=new Function ("return false") 
+else{ 
+document.onmousedown=disableselect 
+document.onmouseup=reEnable 
+} 
+</script>
+<!-- 禁用右键: --> 
+<script> 
+function stop(){ 
+return false; 
+} 
+document.oncontextmenu=stop; 
+/* if (top.location != self.location)
+	top.location=self.location; 
+ */document.oncontextmenu = function () { return false; };
+document.onkeydown = function () {
+    if (window.event && window.event.keyCode == 123) {
+        event.keyCode = 0;
+        event.returnValue = false;
+        return false;
+     }
+ };
+</script>
+</body>
+</html>
+</body>
+</html>

@@ -1,0 +1,189 @@
+:root {
+    --fontColor: #0083b3;
+    --bgColor: #0d0c2b;
+    --borderColor: #0083b3;
+}
+
+/* 功能项 */
+
+.flex_center {
+    display: flex;
+    align-items: center;
+}
+
+.box_sp {
+    text-align: center;
+    background: #122550;
+    box-shadow: 0 0 10px #0083b3 inset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 头部 */
+
+header {
+    height: 6%;
+    padding-top: .3%;
+    border-bottom: 2px solid #15346a;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.time {
+    position: absolute;
+    bottom: 10%;
+    right: 2%;
+    font-size: 1.2rem;
+}
+
+/* 星级颜色 */
+
+.five {
+    background: #247701;
+}
+
+.four {
+    background: #94de63;
+}
+
+.three {
+    background: #1890fe;
+}
+
+.two {
+    background: #f9ae15;
+}
+
+.one {
+    background: #f5232e;
+}
+
+/* 产业 */
+
+.pointer {
+    padding: 5px 0;
+}
+
+.p_on>span {
+    display: inline-block;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+}
+
+.p_on_tit {
+    font-size: 1.1rem;
+}
+
+.p_on_tit span {
+    display: inline-block;
+    height: 1rem;
+    margin-left: 10px;
+    background-size: cover;
+    background-position: center;
+}
+
+/* 产业增幅标志 */
+
+.sheng {
+    width: 1.5rem;
+    background: url('/690/images/up.gif') no-repeat;
+}
+
+.ping {
+    width: 1.5rem;
+    background: url('/690/images/on.gif') no-repeat;
+}
+
+.jiang {
+    width: 1.5rem;
+    background: url('/690/images/down.gif') no-repeat;
+}
+
+/* 产业对应x轴 */
+
+.p_on_2 {
+    padding-left: 15%;
+}
+
+.p_on_3 {
+    padding-left: 45%;
+}
+
+.p_on_4 {
+    padding-left: 65%;
+}
+
+.p_on_5 {
+    padding-left: 85%;
+}
+
+/*日期控件部分*/
+
+/*控制上下小箭头的*/
+
+::-webkit-inner-spin-button {
+    display: none;
+}
+
+/*控制小叉叉*/
+
+::-webkit-clear-button {
+    display: none;
+}
+
+/*#home{
+    pointer-events: none;
+}*/
+
+/* 轮播相关 */
+
+.block_scroll_screen {
+    height: 200%;
+}
+
+.block_scroll_screen_off {
+    height: 200%;
+}
+
+/*火狐兼容*/
+
+@-moz-document url-prefix() {
+    select {
+        -moz-appearance: none !important;
+        background: url('/690/images/input_arrow.png') no-repeat 94% center !important;
+    }
+    @media (max-width: 1400px) {
+        .boxcnt,
+        .block {
+            font-size: 12px !important;
+        }
+        .nav_btns,
+        .pointer div,
+        .block_tit,
+        .int input,
+        .int span,
+        .t_s input,
+        .t_s span,
+        .s_lin1 {
+            font-size: .95rem !important;
+        }
+        .block_scroll {
+            transform: scale(1) !important;
+            width: 100% !important;
+        }
+    }
+    @media (max-width: 1400px) and (min-height: 701px) {
+        .turnbox {
+            margin: 0.5% 10px 2.1% 0 !important;
+        }
+    }
+}

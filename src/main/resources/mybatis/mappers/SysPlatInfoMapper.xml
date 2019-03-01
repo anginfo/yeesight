@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hailian.mapper.SysPlatInfoMapper">
+
+   <!-- 通用查询映射结果 -->
+   <resultMap id="BaseResultMap" type="com.hailian.entity.SysPlatInfo">
+      <id column="id" property="id" />
+      <result column="create_by" property="createBy" />
+      <result column="create_date" property="createDate" />
+      <result column="update_by" property="updateBy" />
+      <result column="update_date" property="updateDate" />
+      <result column="remarks" property="remarks" />
+      <result column="del_flag" property="delFlag" />
+      <result column="name" property="name" />
+      <result column="enname" property="enname" />
+      <result column="versions" property="versions" />
+      <result column="secret_key" property="secretKey" />
+      <result column="contacts" property="contacts" />
+      <result column="contacts_tel" property="contactsTel" />
+      <result column="contacts_mail" property="contactsMail" />
+   </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+      create_by,
+      create_date,
+      update_by,
+      update_date,
+      remarks,
+      del_flag,
+      name,
+      enname,
+      versions,
+      secret_key,
+      contacts,
+      contacts_tel,
+      contacts_mail
+</sql>
+
+</mapper>

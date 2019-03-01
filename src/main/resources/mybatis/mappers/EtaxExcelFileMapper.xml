@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hailian.mapper.EtaxExcelFileMapper">
+
+   <!-- 通用查询映射结果 -->
+   <resultMap id="BaseResultMap" type="com.hailian.entity.EtaxExcelFile">
+      <id column="id" property="id" />
+      <result column="remarks" property="remarks" />
+      <result column="create_by" property="createBy" />
+      <result column="create_date" property="createDate" />
+      <result column="update_by" property="updateBy" />
+      <result column="update_date" property="updateDate" />
+      <result column="del_flag" property="delFlag" />
+      <result column="version" property="version" />
+      <result column="org_compress_type" property="orgCompressType" />
+      <result column="org_compress_name" property="orgCompressName" />
+      <result column="org_compress_path" property="orgCompressPath" />
+      <result column="uncompress_path" property="uncompressPath" />
+      <result column="target_path" property="targetPath" />
+      <result column="target_file_name" property="targetFileName" />
+      <result column="file_id" property="fileId" />
+   </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+      remarks,
+      create_by,
+      create_date,
+      update_by,
+      update_date,
+      del_flag,
+      version,
+      org_compress_type,
+      org_compress_name,
+      org_compress_path,
+      uncompress_path,
+      target_path,
+      target_file_name,
+      file_id,
+</sql>
+
+</mapper>
